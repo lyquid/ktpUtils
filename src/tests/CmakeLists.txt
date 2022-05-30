@@ -1,6 +1,6 @@
 find_package(GTest REQUIRED)
 include(GoogleTest)
 
-add_executable(ktpUtils_src_tests hello_test.cpp)
+add_executable(ktpUtils_src_tests timer_tests.cpp)
 target_link_libraries(ktpUtils_src_tests GTest::GTest GTest::Main)
 gtest_discover_tests(ktpUtils_src_tests)

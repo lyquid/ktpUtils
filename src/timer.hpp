@@ -115,8 +115,11 @@ class Timer {
    */
   const Duration restart() {
     const auto time {elapsed()};
-    stop();
-    start();
+    m_started_time = now();
+    m_paused_time = {};
+    m_started = true;
+    m_stopped = false;
+    m_paused = false;
     return time;
   }
 
@@ -138,7 +141,7 @@ class Timer {
     m_started_time = now();
     m_paused_time = {};
     m_started = true;
-    m_stoped = false;
+    m_stopped = false;
     m_paused = false;
   }
 
@@ -153,7 +156,7 @@ class Timer {
   constexpr void stop() {
     m_started = false;
     m_paused = false;
-    m_stoped = true;
+    m_stopped = true;
     m_started_time = {};
     m_paused_time = {};
   }
@@ -161,7 +164,7 @@ class Timer {
   /**
    * @return True if the timer is stopped.
    */
-  constexpr bool stoped() const { return m_stoped; }
+  constexpr bool stopped() const { return m_stopped; }
 
  private:
 
@@ -172,7 +175,7 @@ class Timer {
   TimePoint m_started_time {};
   bool m_paused {false};
   bool m_started {false};
-  bool m_stoped {false};
+  bool m_stopped {true};
 };
 
 } // end namespace ktp
